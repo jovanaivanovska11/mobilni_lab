@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "279694625870",
+    "project_id": "mobilni-lab",
+    "storage_bucket": "mobilni-lab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279694625870:android:659fbab41ba27f201d471f",
+        "android_client_info": {
+          "package_name": "com.example.mobilni_lab4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279694625870-ont6lv4jtvm3gtpb0hc8i6gq2r3ucf6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA-P4MKP_YxNOQU59UuPCYSZEGcU8IL1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279694625870-ont6lv4jtvm3gtpb0hc8i6gq2r3ucf6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
