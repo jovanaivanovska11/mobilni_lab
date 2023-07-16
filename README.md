@@ -1,4 +1,4 @@
-# mobilni_lab4
+# mobilni_lab
 
 A new Flutter project.
 
