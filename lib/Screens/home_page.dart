@@ -5,6 +5,8 @@ import '../Widgets/new_item.dart';
 import '../Authentication/authentication.dart';
 import '../Screens/calendar_screen.dart';
 import '../Screens/notifications_screen.dart';
+import '../Model/location.dart';
+import 'google_map_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -18,10 +20,23 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<ListItem> _userItems = [
     ListItem(
-      id: "course1",
-      course: "Mobile Information System",
-      date: DateTime.now(),
-    ),
+        id: "course1",
+        course: "Mobile Information System",
+        date: DateTime.parse("2023-02-20 18:00:00"),
+        location: Location(
+            latitude: 42.00510322106074, longitude: 21.406963518278882)),
+    ListItem(
+        id: "course2",
+        course: "Management Information System",
+        date: DateTime.parse("2023-06-24 14:00:00"),
+        location: Location(
+            latitude: 42.00498661107486, longitude: 21.40817371317485)),
+    ListItem(
+        id: "course3",
+        course: "Information System",
+        date: DateTime.parse("2023-07-15 11:00:00"),
+        location: Location(
+            latitude: 42.004736818370006, longitude: 21.40988312815307)),
   ];
 
   void _addItemFunction(BuildContext ct) {
@@ -161,6 +176,26 @@ class _MyHomePageState extends State<MyHomePage> {
         seconds: 2);
   }
 
+  static const String finkiLocation = 'FINKI';
+  static const String feitLocation = 'FEIT';
+  static const String tmfLocation = 'TMF';
+
+  String _location(Location location) {
+    String l = '';
+    if (location.latitude == 42.00510322106074 &&
+        location.longitude == 21.406963518278882) {
+      l = finkiLocation;
+    }
+    else if (location.latitude == 42.00498661107486 &&
+        location.longitude == 21.40817371317485) {
+      l = feitLocation;
+    }
+    else {
+      l = tmfLocation;
+    }
+    return l;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -182,6 +217,29 @@ class _MyHomePageState extends State<MyHomePage> {
           ElevatedButton (
               onPressed: _editNotificationsScreen,
               child:  Icon(Icons.edit_notifications_outlined,)
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            child: ElevatedButton.icon(
+              icon: Icon(
+                Icons.map_outlined,
+                size: 30,
+              ),
+              label: Text(
+                "Locations Map",
+                style: TextStyle(fontSize: 20),
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(10),
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            GoogleMapPage(_userItems)));
+              },
+            ),
           ),
           if (_user == null)
             ElevatedButton(
@@ -229,7 +287,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       "   Time: " +
                       _userItems[index].date.hour.toString() +
                       ":" +
-                      _userItems[index].date.minute.toString(),
+                      _userItems[index].date.minute.toString() +
+                      "   Location: " +
+                      _location(_userItems[index].location),
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 15,
